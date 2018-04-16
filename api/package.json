@@ -1,0 +1,28 @@
+{
+  "name": "api-taakimodoro",
+  "version": "1.0.0",
+  "description": "API for integration with Taakimodoro project",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "consign": "^0.1.6",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.2.1",
+    "mongoose": "^5.0.14"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeffersonGibin/taakimodoro-timer.git"
+  },
+  "author": "Jefferson Gibin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JeffersonGibin/taakimodoro-timer/issues"
+  },
+  "homepage": "https://github.com/JeffersonGibin/taakimodoro-timer#readme"
+}
