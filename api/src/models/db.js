@@ -1,21 +1,23 @@
-var Database = {};
+const Database = {};
 
-Database.connect = function(app){
-	let db = app.mongoose;
+const {host, port, database} = app.settings.defaultSettings.getDB();
 
-	const {host, port, database} = app.settings.defaultSettings.getDB();
+Database.connect = () => {
+	let DB = mongoose;
 
-	db.connect('mongodb://'+host+':'+port+'/'+database+'');
+	DB.plugin(autoIncrement, {field: 'sequence'});
 
-	return db;
+	DB.connect('mongodb://'+host+':'+port+'/'+database+'');
+
+	return DB;
 };
 
-module.exports = (app) => {
-	var db = Database.connect(app);
+module.exports = () => {
+	let DB = Database.connect(app);
 
-	db.connection.on('error', (e) => {
+	DB.connection.on('error', (e) => {
 		console.info("Error connecting database!");
 	});
 
-	return db;
+	return DB;
 };
