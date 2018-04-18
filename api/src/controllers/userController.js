@@ -1,14 +1,14 @@
-const UserController = (app) => {
+const UserController = () => {
 	const UserModel = app.models.userModel;
 
 	const Controller = {
 
 		cryptStringMd5 : (string) => {
-			let crypto = app.crypto.createHash('md5');
+			let _crypto = crypto.createHash('md5');
 
 			if(!string) return "";
 
-			return crypto.update(string).digest("hex");
+			return _crypto.update(string).digest("hex");
 		},
 
 		save : (req, res) => {
@@ -16,6 +16,17 @@ const UserController = (app) => {
 				req.body.password = Controller.cryptStringMd5(req.body.password);
 
 				return !notExistLogin ? UserModel.insert(req.body) : false;
+			});
+		},
+
+		updateTaskUser : (_sequenceUser, newTask) => {
+			return UserModel.getTaskUser(_sequenceUser).then((listTask) =>{
+				let task = listTask || [];
+
+				if(Array.isArray(task)){
+					task.push(newTask);
+					return UserModel.update({sequence : _sequenceUser}, {task : task});
+				}
 			});
 		},
 
@@ -29,6 +40,6 @@ const UserController = (app) => {
 	return Controller;
 };
 
-module.exports = (app) => {
-	return UserController(app);
+module.exports = () => {
+	return UserController();
 };

@@ -11,8 +11,7 @@ module.exports = () => {
 
 		task : {
 			name: {type: String, required: true},
-			status :  {type: String, required: true, default : "PENDENTE"},
-			date : {type: Date, default: Date.now},
+			status :  {type: String, required: true, default : "PENDING"},
 			goal : {type: String, required: true},
 			note : {type: String}
 		},
@@ -21,7 +20,7 @@ module.exports = () => {
 			date : Date,
 			user : Array,
 			task : {type: String, required: true},
-			status :  {type: String, required: true, default : "ATIVO"},
+			status :  {type: String, required: true, default : "ACTIVE"},
 			duration : Number,
 			note : String
 		}
