@@ -5,8 +5,8 @@ module.exports = () => {
 		 	login: {type: String, required: true}, 
 		 	password: {type: String, required: true}, 
 		 	currentPomodoro: {type: Number, required: true, default : 0},
-		 	task : Array,
-		 	pomodro : Array
+		 	task : [Number],
+		 	pomodro : [Number]
 		},
 
 		task : {
@@ -17,12 +17,22 @@ module.exports = () => {
 		},
 
 		pomodoro : {
-			date : Date,
-			user : Array,
+			user : {type: Number, required: true},
 			task : {type: String, required: true},
 			status :  {type: String, required: true, default : "ACTIVE"},
-			duration : Number,
-			note : String
+			stepAmount : {type: Number, required: true, default : 1},
+			item : [{
+				date : Date,
+				status : String,
+				note : String
+			}]
+		},
+
+		settings : {
+			user : {type: Number, required: true},
+			shortBreak : {type: Number, required: true, default : 5},
+			longBreak : {type: Number, required: true, default : 15},
+			timeStep : {type: Number, required: true, default : 25}
 		}
 	}
 }
