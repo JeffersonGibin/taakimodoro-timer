@@ -27,7 +27,11 @@ module.exports = (app) => {
 			UserController
 				.authenticate(req.body.login, req.body.password).then((response) => {
 					let dataReturn = {};
-					let encodedToken = generateToken({login: response.login}, SECRET_KEY, 600);
+					
+					let encodedToken = generateToken({
+						login: response.login,
+						sequence: response.sequence
+					}, SECRET_KEY);
 
 					dataReturn.status = !response ? 401 : 200;
 					dataReturn.type = !response ? USER_NOT_FIND : SUCCESS;

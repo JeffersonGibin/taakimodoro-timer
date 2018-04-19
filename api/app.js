@@ -4,8 +4,8 @@ const
   consign = require('consign')
   mongoose = require('mongoose'),
   crypto = require('crypto'),
-  jwt = require('jsonwebtoken');
-  
+  jwt = require('jsonwebtoken')
+  autoIncrement = require('simple-mongoose-autoincrement');
 app = express();
 
 app.mongoose = mongoose;
